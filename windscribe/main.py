@@ -33,22 +33,20 @@ class Location:
     short: str
     city: str
     label: str
-    pro: bool = False
+    pro = False
 
 
-def _parse_line(self, line):
+def _parse_line(line):
     ansi_escape = re.compile(r"\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])")
-    result = ansi_escape.sub("", line.decode("UTF-8").strip())
-    return result
+    return ansi_escape.sub("", line.decode("UTF-8").strip())
 
 
-def _run(self, args):
+def _run(args):
     child = pexpect.spawn("windscribe", args)
-    lines = list(map(_parse_line, child.readlines()))
-    return lines
+    return list(map(_parse_line, child.readlines()))
 
 
-def status(self):
+def status():
     lines = _run(["status"])
     if len(lines) < 3:
         print("\n".join(lines))
@@ -69,7 +67,7 @@ def status(self):
     return Status(pid, running, uptime, address, connected, location)
 
 
-def account(self):
+def account():
     lines = _run(["account"])
     if len(lines) < 4:
         print("\n".join(lines))
@@ -84,17 +82,17 @@ def account(self):
     return Account(username, usage, cap, plan)
 
 
-def connect(self, location):
+def connect(location):
     lines = _run(["connect", location])
     print("\n".join(lines))
 
 
-def disconnect(self):
+def disconnect():
     lines = _run(["disconnect"])
     print("\n".join(lines))
 
 
-def firewall(self, mode: str = None):
+def firewall(mode: str = None):
     if mode:
         lines = _run(["firewall", mode])
         print("\n".join(lines))
@@ -108,7 +106,7 @@ def firewall(self, mode: str = None):
     return lines[2].split("Firewall mode: ")[1]
 
 
-def lanbypass(self, mode: str = None):
+def lanbypass(mode: str = None):
     if mode:
         lines = _run(["lanbypass", mode])
         print("\n".join(lines))
@@ -122,7 +120,7 @@ def lanbypass(self, mode: str = None):
     return lines[2].split("Default mode: ")[1]
 
 
-def _parse_location(self, line):
+def _parse_location(line):
     array = []
     for segment in filter(None, line.split("  ")):
         value = segment.strip()
@@ -132,7 +130,7 @@ def _parse_location(self, line):
     return array
 
 
-def locations(self):
+def locations():
     lines = _run(["locations"])
     if len(lines) < 1:
         print("\n".join(lines))
@@ -146,7 +144,7 @@ def locations(self):
     return locations
 
 
-def login(self, username: str = None, password: str = None):
+def login(username: str = None, password: str = None):
     child = pexpect.spawn("windscribe", ["login"])
 
     logged_in = child.expect(["Windscribe Username:", "Already Logged in"])
@@ -164,6 +162,6 @@ def login(self, username: str = None, password: str = None):
     raise RuntimeError("Unexpected error")
 
 
-def logout(self):
+def logout():
     lines = _run(["logout"])
     print("\n".join(lines))
