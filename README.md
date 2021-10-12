@@ -3,7 +3,7 @@ A python wrapper library for Windscribe CLI
 
 This is based on [anton.alvariumsoft/python-windscribe-cli-wapper](https://gitlab.com/anton.alvariumsoft/python-windscribe-cli-wapper)
 
-This was tested with Windscribe CLI v1.4
+This was tested with Windscribe CLI v1.4  
 Note: Sometimes Windscribe CLI has errors with its commands, I can't fix this
 
 #### Requirements
@@ -21,23 +21,22 @@ $ pip install dist/Windscribe-0.1.0.tar.gz --user
 #### Usage
 
 ```py
-from windscribe import Windscribe
-windscribe = Windscribe()
+import Windscribe
 
-status = windscribe.status()
+status = Windscribe.status()
 print(status)
 
-account = windscribe.account()
+account = Windscribe.account()
 print(account)
 
-windscribe.connect("Vice")
+Windscribe.connect("Vice")
 
-windscribe.firewall()
-windscribe.firewall("auto")
+Windscribe.firewall()
+Windscribe.firewall("auto")
 
-windscribe.lanbypass()
-windscribe.lanbypass("on")
+Windscribe.lanbypass()
+Windscribe.lanbypass("on")
 
-locations = windscribe.locations()
+locations = Windscribe.locations()
 print(locations)
 ```

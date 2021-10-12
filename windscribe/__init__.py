@@ -1,1 +1,11 @@
-__version__ = "0.1.0"
+from .main import (
+    status,
+    account,
+    connect,
+    disconnect,
+    firewall,
+    lanbypass,
+    locations,
+    login,
+    logout,
+)
