@@ -1,7 +1,6 @@
 from dataclasses import dataclass
 import pexpect
 import re
-import subprocess
 
 
 class StdoutException(Exception):
