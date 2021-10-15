@@ -32,7 +32,7 @@ class Location:
     short: str
     city: str
     label: str
-    pro = False
+    pro: bool = False
 
 
 def _parse_line(line):
