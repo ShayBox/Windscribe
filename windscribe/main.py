@@ -124,7 +124,7 @@ def _parse_location(line):
     for segment in filter(None, line.split("  ")):
         value = segment.strip()
         if value:
-            array.append(value)
+            array.append(value if value != "*" else True)
 
     return array
 
@@ -134,6 +134,8 @@ def locations():
     if len(lines) < 1:
         print("\n".join(lines))
         raise StdoutException
+
+    del lines[0]
 
     locations = []
     for line in lines:
