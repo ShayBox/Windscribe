@@ -8,7 +8,6 @@ Note: Sometimes Windscribe CLI has errors with its commands, I can't fix this
 
 #### Requirements
 - [git](https://git-scm.com/)
-- [poetry](https://python-poetry.org/)
 
 #### Install
 ```
@@ -18,22 +17,22 @@ $ pip install git+https://github.com/shaybox/windscribe.git
 #### Usage
 
 ```py
-import Windscribe
+import windscribe
 
-status = Windscribe.status()
+status = windscribe.status()
 print(status)
 
-account = Windscribe.account()
+account = windscribe.account()
 print(account)
 
-Windscribe.connect("Vice")
+windscribe.connect("Vice")
 
-Windscribe.firewall()
-Windscribe.firewall("auto")
+windscribe.firewall()
+windscribe.firewall("auto")
 
-Windscribe.lanbypass()
-Windscribe.lanbypass("on")
+windscribe.lanbypass()
+windscribe.lanbypass("on")
 
-locations = Windscribe.locations()
+locations = windscribe.locations()
 print(locations)
 ```
