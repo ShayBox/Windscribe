@@ -12,10 +12,7 @@ Note: Sometimes Windscribe CLI has errors with its commands, I can't fix this
 
 #### Install
 ```
-$ git clone https://github.com/ShayBox/Windscribe.git
-$ cd Windscribe
-$ poetry build
-$ pip install dist/Windscribe-0.2.0.tar.gz --user
+$ pip install git+https://github.com/shaybox/windscribe.git
 ```
 
 #### Usage
